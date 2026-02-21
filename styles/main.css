@@ -3,69 +3,76 @@
    Reused from DARE Lab architecture
 -------------------------------- */
 :root {
-    /* Colors - Sophisticated Monochromatic Slate */
-    --bg: #0a0a0c;
-    --bg-subtle: #111114;
-    --text: #ecedee;
-    --text-muted: #9ba1a6;
-    --text-dim: #70757a;
+    /* Colors - Sophisticated Monochromatic Slate (HSL) */
+    --h: 230;
+    --s: 12%;
+
+    --bg-h: 230;
+    --bg-s: 10%;
+    --bg-l: 4%;
+    --bg: hsl(var(--bg-h), var(--bg-s), var(--bg-l));
+    --bg-subtle: hsl(var(--bg-h), var(--bg-s), 8%);
+
+    --text: hsl(210, 20%, 96%);
+    --text-muted: hsl(210, 10%, 65%);
+    --text-dim: hsl(210, 8%, 45%);
 
     --brand: #ffffff;
-    --brand-muted: rgba(255, 255, 255, 0.1);
-    --accent: #3b82f6;
+    --accent-h: 217;
+    --accent-s: 91%;
+    --accent-l: 60%;
+    --accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+    --accent-glow: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.15);
 
-    --border: rgba(255, 255, 255, 0.08);
-    --border-strong: rgba(255, 255, 255, 0.15);
+    --border: hsla(0, 0%, 100%, 0.06);
+    --border-strong: hsla(0, 0%, 100%, 0.12);
 
-    --glass: rgba(17, 17, 20, 0.7);
-    --glass-border: rgba(255, 255, 255, 0.05);
+    --glass: hsla(var(--bg-h), var(--bg-s), 8%, 0.7);
+    --glass-border: hsla(0, 0%, 100%, 0.05);
+    --glass-glow: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.03);
 
-    --radius: 8px;
-    --radius-lg: 12px;
-    --max: 1280px;
+    --radius: 10px;
+    --radius-lg: 16px;
+    --max: 1200px;
 
     --font-serif: 'Instrument Serif', serif;
-    --font-sans: 'Inter', sans-serif;
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 
-    --grid-gap: 1.5rem;
-
-    /* Spacing Scale */
-    --space-1: 0.25rem;
-    --space-2: 0.5rem;
-    --space-3: 0.75rem;
-    --space-4: 1rem;
-    --space-5: 1.25rem;
-    --space-6: 1.5rem;
-    --space-7: 1.75rem;
-    --space-8: 2rem;
-    --space-10: 2.5rem;
-    --space-12: 3rem;
-    --space-16: 4rem;
-    --space-20: 5rem;
-
-    /* Typography Scale */
-    --text-xs: 0.75rem;
-    --text-sm: 0.875rem;
-    --text-base: 1rem;
-    --text-lg: 1.125rem;
-    --text-xl: 1.25rem;
-    --text-2xl: 1.5rem;
-    --text-3xl: 1.875rem;
-    --text-4xl: 2.25rem;
-    --text-5xl: 3rem;
-    --text-6xl: 3.75rem;
+    --grid-gap: 2rem;
 }
 
 [data-theme="light"] {
-    --bg: #ffffff;
-    --bg-subtle: #f9fafb;
-    --text: #111827;
-    --text-muted: #4b5563;
-    --text-dim: #6b7280;
-    --border: rgba(0, 0, 0, 0.08);
-    --border-strong: rgba(0, 0, 0, 0.15);
-    --glass: rgba(255, 255, 255, 0.8);
-    --glass-border: rgba(0, 0, 0, 0.05);
+    --bg-h: 210;
+    --bg-s: 20%;
+    --bg-l: 100%;
+    --bg: hsl(var(--bg-h), var(--bg-s), var(--bg-l));
+    --bg-subtle: hsl(var(--bg-h), var(--bg-s), 97%);
+    --text: hsl(220, 40%, 10%);
+    --text-muted: hsl(215, 15%, 40%);
+    --text-dim: hsl(215, 10%, 55%);
+    --border: hsla(0, 0%, 0%, 0.08);
+    --border-strong: hsla(0, 0%, 0%, 0.15);
+    --glass: hsla(0, 0%, 100%, 0.8);
+    --glass-border: hsla(0, 0%, 0%, 0.05);
+    --glass-glow: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.02);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-dim);
 }
 
 /* -----------------------------
@@ -239,21 +246,45 @@ a:hover {
 
 .nav-pill {
     background: var(--glass);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
     border: 1px solid var(--glass-border);
     border-radius: 999px;
     padding: 0.5rem 1.5rem;
     display: flex;
     align-items: center;
     gap: 2rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 10px 30px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 hsla(0, 0%, 100%, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    transition:
+        opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1),
+        transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: opacity, transform;
+}
+
+.menu a.active {
+    color: var(--text) !important;
+    opacity: 1 !important;
+}
+
+.menu a.active::after {
+    width: 100% !important;
 }
 
 .brand {
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    z-index: 2;
 }
 
 .brand span {
@@ -263,6 +294,42 @@ a:hover {
     letter-spacing: -0.03em;
 }
 
+.menu {
+    display: flex;
+    gap: 1.5rem;
+    z-index: 2;
+}
+
+.menu a {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+    padding: 0.5rem 0.25rem;
+    position: relative;
+}
+
+.menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.menu a:hover {
+    color: var(--text);
+    opacity: 1;
+}
+
+.menu a:hover::after {
+    width: 100%;
+}
+
 .menu-btn {
     display: none;
     background: none;
@@ -270,6 +337,7 @@ a:hover {
     color: var(--text);
     cursor: pointer;
     font-size: 1.5rem;
+    padding: 0.5rem;
 }
 
 .drawer {
@@ -278,10 +346,16 @@ a:hover {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100dvh;
     background: var(--bg);
     z-index: 2000;
     padding: 2rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.drawer.active {
+    opacity: 1;
 }
 
 .drawer .menu {
@@ -293,22 +367,8 @@ a:hover {
 }
 
 .drawer .menu a {
-    font-size: 1.5rem;
-}
-
-.menu {
-    display: flex;
-    gap: 1.5rem;
-}
-
-.menu a {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--text-muted);
-}
-
-.menu a:hover {
-    color: var(--text);
+    font-size: 1.75rem;
+    font-family: var(--font-serif);
 }
 
 .btn {
@@ -480,25 +540,61 @@ a:hover {
 .bento-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, auto);
     gap: var(--grid-gap);
-    margin-top: 2rem;
 }
 
 .bento-card {
     background: var(--bg-subtle);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 2.25rem;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: border-color 0.3s ease;
-    height: 100%;
-    position: relative;
+    transition:
+        transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+    box-shadow: 0 4px 12px hsla(0, 0%, 0%, 0.1);
+}
+
+.bento-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
 
 .bento-card:hover {
+    transform: translateY(-4px);
     border-color: var(--border-strong);
+    box-shadow: 0 12px 24px hsla(0, 0%, 0%, 0.2), 0 0 0 1px hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.1);
+}
+
+.bento-card:hover::before {
+    opacity: 1;
+}
+
+.card-accent {
+    background: linear-gradient(135deg, var(--accent), hsl(var(--accent-h), var(--accent-s), 50%)) !important;
+    border-color: hsla(var(--accent-h), var(--accent-s), 100%, 0.1) !important;
+}
+
+.card-accent::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    pointer-events: none;
 }
 
 .card-large {
@@ -967,8 +1063,11 @@ section {
 
 .reveal-on-scroll {
     opacity: 0;
-    transform: translateY(15px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transform: translateY(30px);
+    transition:
+        opacity 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+        transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: opacity, transform;
 }
 
 .reveal-on-scroll.revealed {
@@ -1069,12 +1168,12 @@ section {
     .grid-4,
     .positions-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 1.5rem;
     }
 
     .bento-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 1.5rem;
     }
 
     .bento-card {
@@ -1187,12 +1286,25 @@ section {
     font-size: 0.72rem;
     font-weight: 700;
     color: var(--accent);
-    background: rgba(59, 130, 246, 0.05);
-    border: 1px solid rgba(59, 130, 246, 0.1);
-    padding: 0.2rem 0.6rem;
-    border-radius: 999px;
+    background: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.08);
+    border: 1px solid hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.15);
+    padding: 0.4rem 0.75rem;
+    border-radius: var(--radius);
     letter-spacing: 0.05em;
     pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    line-height: 1.2;
+}
+
+.project-budget::before {
+    content: "Budget";
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    opacity: 0.55;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
 }
 
 .card-accent .project-budget {
