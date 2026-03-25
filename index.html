@@ -48,8 +48,9 @@
 
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
-    <link rel="stylesheet" href="styles/main.css?v=2">
+    <link rel="stylesheet" href="styles/main.css?v=4">
 </head>
 
 <body data-theme="dark">
@@ -105,8 +106,11 @@
             <div class="hero-affiliation reveal" style="animation-delay: 0.25s">
                 <span>Samsun University — Özdemir Bayraktar Faculty of Aeronautics and Astronautics</span>
             </div>
-            <div class="reveal" style="animation-delay: 0.3s">
+            <div class="reveal hero-actions" style="animation-delay: 0.3s">
                 <a class="btn primary hero-btn" href="#about">Explore</a>
+                <button id="downloadCvBtn" class="btn btn-cv" onclick="generateCV()">
+                    <span class="cv-icon">📄</span> Download CV
+                </button>
             </div>
         </div>
     </main>
@@ -163,10 +167,12 @@
                         <span class="tag">Airport Operations</span>
                         <span class="tag">Machine Learning</span>
                         <span class="tag">Decision Support Systems</span>
-                        <span class="tag">Human Factors (HFACS)</span>
+                        <span class="tag">Human Factors</span>
                         <span class="tag">Sustainability</span>
                         <span class="tag">Deep Learning</span>
                         <span class="tag">Multi-Objective Programming</span>
+                        <span class="tag">Urban Air Mobility</span>
+                        <span class="tag">Intelligent Transportation Systems</span>
                     </div>
                 </div>
             </div>
@@ -200,8 +206,7 @@
                         <h3>M.Sc. — Air Traffic Control</h3>
                         <p class="institution-text">Anadolu University — Graduate School of Sciences</p>
                         <p class="thesis-text">Thesis: "The relationship between operation and organization in
-                            21st century aviation accidents: Human Factors Analysis and Classification System (HFACS)
-                            application"</p>
+                            21st century aviation incidents: HFACS application"</p>
                         <p class="advisor-text">Advisor: Dr. Suat Uslu</p>
                     </div>
                 </div>
@@ -234,7 +239,7 @@
                         <div class="position-entry">
                             <div class="position-date">2025 (Jun–Sep)</div>
                             <div class="position-details">
-                                <strong>Post-Doc Researcher</strong>
+                                <strong>Visiting Researcher</strong>
                                 <span class="institution-text">Nanyang Technological University — ATMRI,
                                     Singapore</span>
                             </div>
@@ -355,7 +360,7 @@
 
             <!-- Sub-navigation tabs -->
             <div class="pub-tabs">
-                <button class="pub-tab active" data-target="journals">Journals (27)</button>
+                <button class="pub-tab active" data-target="journals">Journals (28)</button>
                 <button class="pub-tab" data-target="proceedings">Proceedings (13)</button>
                 <button class="pub-tab" data-target="books">Books & Others</button>
                 <button class="pub-tab" data-target="analysis">📊 Analysis & Graphs</button>
@@ -402,6 +407,16 @@
                                 target="_blank">DOI</a>
                         </div>
                         <span class="pub-q">Q1</span>
+                    </li>
+                    <li class="pub-item">
+                        <span class="pub-year">2026</span>
+                        <div class="pub-content">
+                            <p><strong>Dönmez K.</strong>, Şahin O. (2026). Matheuristic strategy development and
+                                benchmarking for explainable and efficient aircraft departure sequencing.
+                                <em>The Aeronautical Journal</em>, 1-26.
+                            </p>
+                        </div>
+                        <span class="pub-q">Q2</span>
                     </li>
                     <li class="pub-item">
                         <span class="pub-year">2025</span>
@@ -621,7 +636,7 @@
                         <span class="pub-year">2018</span>
                         <div class="pub-content">
                             <p><strong>Dönmez K.</strong>, Uslu S. (2018). The Relationship Between Flight Operations
-                                and Organizations in Aircraft Accidents; The Application of HFACS. <em>Anadolu
+                                and Organizations in aircraft incidents; The Application of HFACS. <em>Anadolu
                                     University Journal of Science and Technology A</em>, 19(2), 316-333.</p>
                             <a href="https://doi.org/10.18038/aubtda.348219" class="doi-link" target="_blank">DOI</a>
                         </div>
@@ -797,7 +812,7 @@
                 <div class="metrics-row">
                     <div class="metric-card">
                         <span class="metric-source">Google Scholar</span>
-                        <span class="metric-number">325</span>
+                        <span class="metric-number">336</span>
                         <span class="metric-label">Total Citations</span>
                     </div>
                     <div class="metric-card">
@@ -811,7 +826,7 @@
                         <span class="metric-label">i10-index</span>
                     </div>
                 </div>
-                <p class="metrics-note">Citation data last updated: February 2026</p>
+                <p class="metrics-note">Citation data last updated: March 2026</p>
 
                 <!-- Charts Grid — Large Charts (2-col) -->
                 <div class="analysis-grid">
@@ -851,7 +866,7 @@
                     </div>
                     <div class="chart-card">
                         <h4>Authorship Distribution</h4>
-                        <p class="chart-desc">Sole author, first author & co-author ratio</p>
+                        <p class="chart-desc">First+Single author & co-author ratio</p>
                         <div class="chart-wrapper"><canvas id="chartAuthorship"></canvas></div>
                     </div>
                 </div>
@@ -952,7 +967,7 @@
 
                 <div class="bento-card">
                     <span class="label">University Funded</span>
-                    <h3>HFACS Application in 21st Century Aviation Events</h3>
+                    <h3>HFACS Application in 21st Century Aviation incidents</h3>
                     <p>Researcher — PI: Suat Uslu. Feb 2018 – May 2018.</p>
                     <div class="project-budget">≤ 25,000 TL</div>
                 </div>
@@ -966,7 +981,7 @@
 
                 <div class="bento-card">
                     <span class="label">University Funded</span>
-                    <h3>Communication-Related Aviation Accidents: Analysis & Solutions</h3>
+                    <h3>Communication-Related Aviation incidents: Analysis & Solutions</h3>
                     <p>Researcher — PI: Suat Uslu. Jun 2016 – Sep 2017.</p>
                     <div class="project-budget">≤ 25,000 TL</div>
                 </div>
@@ -1176,7 +1191,15 @@
         </div>
     </footer>
 
-    <script src="js/main.js?v=2"></script>
+    <div id="cv-loading-overlay">
+        <div class="cv-spinner"></div>
+        <h3 style="font-family: var(--font-sans); margin-bottom: 5px;">Generating Professional CV</h3>
+        <p style="color: #94a3b8; font-size: 0.9rem;">Gathering charts, rendering graphics, mapping DOIs...</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js?v=4"></script>
+    <script src="js/cv-generator.js?v=2"></script>
 </body>
 
 </html>
