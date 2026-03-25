@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 1. Publications per Year — Line Chart
         // ==============================
         const pubYears = ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026'];
-        const journalsByYear = [2, 1, 2, 0, 2, 0, 4, 6, 3, 4, 3];
+        const journalsByYear = [2, 1, 2, 0, 2, 0, 4, 6, 3, 4, 4];
         const proceedingsByYear = [0, 2, 0, 2, 1, 0, 4, 2, 1, 1, 0];
 
         const ctxPubYear = document.getElementById('chartPubYear');
@@ -312,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 data: {
                     labels: ['Q1 (Scopus)', 'Q2 (Scopus)', 'Other / National'],
                     datasets: [{
-                        data: [10, 10, 7],
+                        data: [10, 11, 7],
                         backgroundColor: [
                             `rgba(${accentRGB}, 0.85)`,
                             'rgba(16,185,129,0.85)',
@@ -353,8 +353,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 data: {
                     labels: [
                         'J. Air Transport Mgmt.',
-                        'Transportation Research Record',
                         'The Aeronautical Journal',
+                        'Transportation Research Record',
                         'Aerospace',
                         'Energy',
                         'Expert Systems w/ Applications',
@@ -362,7 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ],
                     datasets: [{
                         label: 'Papers',
-                        data: [4, 3, 3, 2, 1, 1, 1],
+                        data: [4, 4, 3, 2, 1, 1, 1],
                         backgroundColor: palette.slice(0, 7),
                         borderRadius: 6,
                         borderSkipped: false,
@@ -407,7 +407,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026*'],
                     datasets: [{
                         label: 'Citations',
-                        data: [6, 6, 12, 22, 38, 51, 63, 103, 14],
+                        data: [6, 6, 12, 22, 38, 51, 63, 103, 25],
                         backgroundColor: gradCit,
                         borderColor: 'rgba(139,92,246,0.9)',
                         borderWidth: 1.5,
@@ -514,7 +514,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 data: {
                     labels: ['Journal Articles', 'Conference Proceedings', 'Book Chapters'],
                     datasets: [{
-                        data: [27, 13, 1],
+                        data: [28, 13, 1],
                         backgroundColor: [
                             `rgba(${accentRGB}, 0.85)`,
                             'rgba(251,146,60,0.85)',
@@ -712,11 +712,10 @@ document.addEventListener('DOMContentLoaded', () => {
             chartInstances.push(new Chart(ctxAuth.getContext('2d'), {
                 type: 'doughnut',
                 data: {
-                    labels: ['Sole Author', 'First Author', 'Co-Author'],
+                    labels: ['First+Single Author', 'Co-Author'],
                     datasets: [{
-                        data: [11, 15, 14],
+                        data: [27, 14],
                         backgroundColor: [
-                            'rgba(139,92,246,0.85)',
                             `rgba(${accentRGB}, 0.85)`,
                             'rgba(16,185,129,0.85)',
                         ],
@@ -747,6 +746,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         chartsInitialized = true;
     }
+
+    // Expose for PDF Generation
+    window.renderAnalysisCharts = renderAnalysisCharts;
 
     // Lazy init: render charts when the "Analysis & Graphs" tab is clicked
     pubTabs.forEach(tab => {
