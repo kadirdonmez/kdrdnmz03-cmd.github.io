@@ -315,11 +315,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const bioMore = document.querySelector('#about .bio-more');
         const publicationParagraph = Array.from(document.querySelectorAll('#about .bio-more p')).find(p => p.textContent.includes('As of July 2026') || p.textContent.includes('My publication record features'));
         if (publicationParagraph) {
-            publicationParagraph.textContent = "As of July 2026, my publication record features 43 works (29 journal papers, 13 conference proceedings, and 1 book chapter). Of these, 22 are Q1/Q2 indexed papers (10 in Q1, 12 in Q2).";
+            publicationParagraph.textContent = "As of September 2026, my publication record features 44 works (30 journal papers, 13 conference proceedings, and 1 book chapter). Of these, 22 are Q1/Q2 indexed papers (10 in Q1, 12 in Q2).";
         } else if (bioMore) {
             const techParagraph = Array.from(bioMore.querySelectorAll('p')).find(p => p.textContent.includes('In my courses and research'));
             const newPublicationParagraph = document.createElement('p');
-            newPublicationParagraph.textContent = "As of July 2026, my publication record features 43 works (29 journal papers, 13 conference proceedings, and 1 book chapter). Of these, 22 are Q1/Q2 indexed papers (10 in Q1, 12 in Q2).";
+            newPublicationParagraph.textContent = "As of September 2026, my publication record features 44 works (30 journal papers, 13 conference proceedings, and 1 book chapter). Of these, 22 are Q1/Q2 indexed papers (10 in Q1, 12 in Q2).";
             if (techParagraph) {
                 techParagraph.insertAdjacentElement('beforebegin', newPublicationParagraph);
             } else {
@@ -608,22 +608,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const pubTabs = document.querySelectorAll('.pub-tab');
     const pubPanels = document.querySelectorAll('.pub-panel');
 
-    const analysisTab = Array.from(pubTabs).find(tab => tab.dataset.target === 'analysis');
-    if (analysisTab?.parentElement) {
-        analysisTab.parentElement.prepend(analysisTab);
-    }
-
-    if (analysisTab) {
-        pubTabs.forEach(tab => tab.classList.remove('active'));
-        pubPanels.forEach(panel => panel.classList.remove('active'));
-        analysisTab.classList.add('active');
-        const analysisPanel = document.getElementById('analysis');
-        if (analysisPanel) {
-            analysisPanel.classList.add('active');
-        }
-        analysisTab.textContent = 'Analysis & Graphs';
-    }
-
     pubTabs.forEach(tab => {
         tab.addEventListener('click', () => {
             const target = tab.dataset.target;
@@ -858,7 +842,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 1. Publications per Year — Line Chart
         // ==============================
         const pubYears = ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026'];
-        const journalsByYear = [2, 1, 2, 0, 2, 0, 4, 6, 3, 4, 5];
+        const journalsByYear = [2, 1, 2, 0, 2, 0, 4, 6, 3, 4, 6];
         const proceedingsByYear = [0, 2, 0, 2, 1, 0, 4, 2, 1, 1, 0];
 
         const ctxPubYear = document.getElementById('chartPubYear');
@@ -1141,7 +1125,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 data: {
                     labels: ['Journal Articles', 'Conference Proceedings', 'Book Chapters'],
                     datasets: [{
-                        data: [29, 13, 1],
+                        data: [30, 13, 1],
                         backgroundColor: [
                             `rgba(${accentRGB}, 0.85)`,
                             'rgba(251,146,60,0.85)',
