@@ -315,11 +315,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const bioMore = document.querySelector('#about .bio-more');
         const publicationParagraph = Array.from(document.querySelectorAll('#about .bio-more p')).find(p => p.textContent.includes('As of July 2026') || p.textContent.includes('My publication record features'));
         if (publicationParagraph) {
-            publicationParagraph.textContent = "As of September 2026, my publication record features 44 works (30 journal papers, 13 conference proceedings, and 1 book chapter). Of these, 22 are Q1/Q2 indexed papers (10 in Q1, 12 in Q2).";
+            publicationParagraph.textContent = "As of September 2026, my publication record features 44 works (30 journal papers, 13 conference proceedings, and 1 book chapter). Of these, 23 are Q1/Q2 indexed papers (11 in Q1, 12 in Q2).";
         } else if (bioMore) {
             const techParagraph = Array.from(bioMore.querySelectorAll('p')).find(p => p.textContent.includes('In my courses and research'));
             const newPublicationParagraph = document.createElement('p');
-            newPublicationParagraph.textContent = "As of September 2026, my publication record features 44 works (30 journal papers, 13 conference proceedings, and 1 book chapter). Of these, 22 are Q1/Q2 indexed papers (10 in Q1, 12 in Q2).";
+            newPublicationParagraph.textContent = "As of September 2026, my publication record features 44 works (30 journal papers, 13 conference proceedings, and 1 book chapter). Of these, 23 are Q1/Q2 indexed papers (11 in Q1, 12 in Q2).";
             if (techParagraph) {
                 techParagraph.insertAdjacentElement('beforebegin', newPublicationParagraph);
             } else {
@@ -922,7 +922,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 data: {
                     labels: ['Q1 (Scopus)', 'Q2 (Scopus)', 'Other / National'],
                     datasets: [{
-                        data: [10, 12, 7],
+                        data: [11, 12, 7],
                         backgroundColor: [
                             `rgba(${accentRGB}, 0.85)`,
                             'rgba(16,185,129,0.85)',
@@ -969,12 +969,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         'Energy',
                         'Expert Systems w/ Applications',
                         'Transportation Research Part E',
-                        'J. Thermal Anal. Calorim.'
+                        'J. Thermal Anal. Calorim.',
+                        'Transportation Research Interdisciplinary Perspectives'
                     ],
                     datasets: [{
                         label: 'Papers',
-                        data: [4, 4, 3, 2, 1, 1, 1, 1],
-                        backgroundColor: palette.slice(0, 8),
+                        data: [4, 4, 3, 2, 1, 1, 1, 1, 1],
+                        backgroundColor: palette.slice(0, 9),
                         borderRadius: 6,
                         borderSkipped: false,
                         barPercentage: 0.7,
@@ -1018,7 +1019,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026*'],
                     datasets: [{
                         label: 'Citations',
-                        data: [6, 6, 12, 22, 38, 51, 63, 103, 75],
+                        data: [6, 6, 12, 22, 38, 51, 63, 103, 91],
                         backgroundColor: gradCit,
                         borderColor: 'rgba(139,92,246,0.9)',
                         borderWidth: 1.5,
@@ -1326,7 +1327,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 data: {
                     labels: ['First+Single Author', 'Co-Author'],
                     datasets: [{
-                        data: [27, 15],
+                        data: [28, 15],
                         backgroundColor: [
                             `rgba(${accentRGB}, 0.85)`,
                             'rgba(16,185,129,0.85)',
