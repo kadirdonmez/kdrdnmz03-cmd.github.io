@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const bioParagraphs = document.querySelectorAll('#about .bio-more p');
         if (bioParagraphs.length >= 6) {
             bioParagraphs[3].textContent = "Since 2022, I have been actively teaching a range of undergraduate and graduate courses. These include Basic Aircraft Knowledge and Basic Aerodynamics for undergraduate students in the Department of Aircraft Maintenance, as well as Aerospace Instruments for students in Aeronautics and Astronautics Engineering. It offers students a comprehensive understanding of working principles of instruments. At the graduate level, I teach Optimization Techniques in Engineering, guiding students through nearly 50 optimization problems, model formulation, Python coding, and solution analysis. In 2023, I mentored my first Master's student on terminal airspace complexity using multi-criteria decision-making tools.";
-            bioParagraphs[4].textContent = "In October 2025, I was appointed Vice Dean of the Faculty of Aeronautics and Astronautics. I serve on the University Education Commission and the Strategic Planning Commission, shaping educational strategies and long-term goals. I also mentor several student teams and frequently serve as a jury member in numerous M.Sc. and Ph.D. thesis defenses.";
+            bioParagraphs[4].textContent = "From October 2025 to August 2026, I served as Vice Dean of the Faculty of Aeronautics and Astronautics. I serve on the University Education Commission and the Strategic Planning Commission, shaping educational strategies and long-term goals. I also mentor several student teams and frequently serve as a jury member in numerous M.Sc. and Ph.D. thesis defenses.";
             bioParagraphs[5].textContent = "Throughout my professional career, I have been actively involved in various research and development projects, including those funded by the EU, TUBITAK, and university programs, serving as a project coordinator, advisor, and expert. Additionally, I currently provide project-based consultancy services to a company in the defense industry.";
         }
 
@@ -331,7 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (adminRolesCard) {
             const firstDate = adminRolesCard.querySelector('.position-list .position-entry .position-date');
             if (firstDate) {
-                firstDate.textContent = 'Oct 2025 - Present';
+                firstDate.textContent = 'Oct 2025 - Aug 2026';
             }
 
             if (!adminRolesCard.querySelector('.jury-service-block')) {
